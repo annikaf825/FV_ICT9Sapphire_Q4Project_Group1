@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Train Ticket Center</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container-fluid">
+           <a class="navbar-brand" href="javascript:location.reload();">
+    <img src="https://i.redd.it/frm5m4wsadrd1.jpeg" id="LOGO" alt="MRT Logo"></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Schedule">Train Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Contact">About Us/Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control" type="text" placeholder="Search...">
+                    <button class="btn btn-success" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+<center>
+
+<br><br>
+    <div class="container mt-5 pt-5">
+        <section id="Home">
+            <h1>MRT Line 3 Map</h1>
+            <br>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv-zCzec2vdflq8-V-vNqLSwXHLBU18Fvh9g&s" id="MAP3">
+        </section>
+
+        <section id="TicketTypes" class="mt-5">
+            <h2>Types of Tickets</h2>
+            <ul>
+                <li>Regular Fare: Php 13 – 28</li>
+                <li>Discounted Fare (20% Off): Available for Senior Citizens, PWDs, and Students</li>
+            </ul>
+        </section>
+
+        <section id="StationSelector" class="mt-5">
+            <h2>Select Your Station</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="fromStation" class="form-label">From Station</label>
+                    <select class="form-control" id="fromStation">
+                        <option value="0">North Avenue</option>
+                        <option value="0">Quezon Avenue</option>
+                        <option value="0">GMA Kamuning</option>
+                        <option value="3">Cubao</option>
+                        <option value="3">Santolan</option>
+                        <option value="7">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option>
+                        <option value="7">Boni</option>
+                        <option value="11">Guadalupe</option>
+                        <option value="11">Buendia</option>
+                        <option value="11">Ayala</option>
+                        <option value="15">Magallanes</option>
+                        <option value="15">Taft Avenue</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="toStation" class="form-label">To Station</label>
+                    <select class="form-control" id="toStation">
+                     <option value="0">Select Station</option>
+                        <option value="0">North Avenue</option>
+                        <option value="0">Quezon Avenue</option>
+                        <option value="0">GMA Kamuning</option>
+                        <option value="3">Cubao</option>
+                        <option value="3">Santolan</option>
+                        <option value="7">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option>
+                        <option value="7">Boni</option>
+                        <option value="11">Guadalupe</option>
+                        <option value="11">Buendia</option>
+                        <option value="11">Ayala</option>
+                        <option value="15">Magallanes</option>
+                        <option value="15">Taft Avenue</option>
+                    </select>
+                </div>
+
+
+                <button type="button" class="btn btn-primary" id="regular" onclick="showpricing()">Regular Fare</button>
+                <button type="button" class="btn btn-primary" id="discount" onclick="showmdiscount()">Discounted Fare</button>
+
+            </form>
+        </section>
+
+    <center>
+        <br><br>
+    <p>Fare amount:</p>
+                <p>
+                <input type="text" class="fare-box" id="fareAmount" readonly>
+                <br>
+
+<script type="text/javascript">
+
+function showpricing() {
+    var location = document.getElementById("fromStation").value;
+    var destination = document.getElementById("toStation").value;
+
+    var baseFare = 13;
+    var difference = (location - destination) * ((location - destination) >= 0 ? 1 : -1);
+
+    var finalFare = difference + baseFare;
+    
+    document.getElementById("fareAmount").value = "₱" + finalFare;
+}
+
+function showmdiscount() {
+    var location = document.getElementById("fromStation").value;
+    var destination = document.getElementById("toStation").value;
+    var discount = 0.20; 
+
+    var baseFare = 13;
+    var difference = (location - destination) * ((location - destination) >= 0 ? 1 : -1);
+
+    var finalFare = difference + baseFare;
+    var discountedFare = finalFare * (1 - discount);
+    
+    document.getElementById("fareAmount").value = "₱" + discountedFare;
+}
+
+
+
+</script>
+<style>
+.fare-box {
+            width: 250px;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+      
+</style>
+
+    <br>
+
+</center>
+
+
+</body>
+</html>
+
+
+        <section id="Schedule" class="mt-5">
+    <h2>Train Schedule</h2>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th rowspan="2">TIMETABLE</th>
+                <th colspan="2">NORTH AVENUE STATION</th>
+                <th colspan="2">TAFT AVENUE STATION</th>
+            </tr>
+            <tr>
+                <th>FIRST TRAIN</th>
+                <th>LAST TRAIN</th>
+                <th>FIRST TRAIN</th>
+                <th>LAST TRAIN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>WEEKDAYS</td>
+                <td>4:36 AM</td>
+                <td>9:30 PM</td>
+                <td>5:18 AM</td>
+                <td>10:11 PM</td>
+            </tr>
+            <tr>
+                <td>SATURDAYS</td>
+                <td>4:37 AM</td>
+                <td>9:30 PM</td>
+                <td>5:18 AM</td>
+                <td>10:08 PM</td>
+            </tr>
+            <tr>
+                <td>SUNDAYS/HOLIDAYS</td>
+                <td>4:38 AM</td>
+                <td>9:30 PM</td>
+                <td>5:19 AM</td>
+                <td>10:09 PM</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+        </section>
+
+        <section id="Feedback" class="mt-5">
+            <h2>Comments and Feedback</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="feedbackName" class="form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="feedbackName" placeholder="Enter your name:..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="feedbackMessage" class="form-label">Email:</label>
+                    <textarea class="form-control" id="email" placeholder="Enter Email..." required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="feedbackMessage" class="form-label">Feedback:</label>
+                    <textarea class="form-control" id="feedbackMessage" rows="4" placeholder="Enter Feedback..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+        </section>
+
+        <section id="Contact" class="mt-5">
+            <h2>Contact Information</h2>
+            <p>Email: support@mugentraincenter.com</p>
+            <p>Phone: +0xxxxxxxxx</p>
+        </section>
+    </div>
+
+    <footer class="bg-secondary text-white text-center p-3 mt-5">
+        <p> Submitted by Annika Francisco & Rohann Cruz</p>
+
+
+
+    <label>
+        <a href="index.html"><button>Refresh</button></a> <br> <a style="color: floralwhite;" href="https://docs.google.com/document/d/1OIH11LF7vixar0YzRp5DPrXacUjd4Lp29lMI7jwJY5k/edit?usp=sharing" target="new" style="text-align: center; font-size: 30px;">References</a>
+
+    </label>
+
+       
+    </footer>
+
+    <style>
+        .container {
+            font-family: 'Cursive', sans-serif;
+            font-size: 19px;
+            width: 80%;
+            margin-top: 0;
+            padding-top: 0px;
+        }
+        #LOGO {
+            width: 60px;
+            height: 40px;
+        }
+
+        #MAP3 {
+            width: 300px;
+            height: 300px;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 10px;
+        }
+
+        h1{
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoOT1UQYcijL9Ivg9x3brkItKjlDOLr9p0xw&s") ;
+background-repeat: repeat;
+color: #900020;
+  margin: 0;
+    padding: 10px;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+h2{
+    color: #8B0000;
+}
+
+label{
+    color: #A5B9CC;
+}
+
+p{
+    color: #A5B9CC;
+}
+
+li{
+    color: #A5B9CC;
+}
+
+body{
+     background-image:url('https://preview.redd.it/jiczv4qx9xp91.png?width=640&crop=smart&auto=webp&s=a076255908768a1b7666bd064c04b309a223967d');
+     background-repeat: no repeat;
+     background-size: cover;
+     background-attachment: fixed;
+} 
+
+        .container{
+    background-color: #000000;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.navbar {
+    background-color: #000000; }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

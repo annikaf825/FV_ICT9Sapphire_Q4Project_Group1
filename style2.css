@@ -1,0 +1,26 @@
+#LOGO{
+	width: 60px;
+	height: 40px;
+}
+
+body{
+	background-image:url('https://img.freepik.com/premium-photo/mix-vegetables-food-isolated-grey-background_429553-174.jpg');
+	background-repeat: no repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.recoms {
+    width: 340px;
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.container{
+	font-family: cursive;
+	font-size: 19px;
+	width: 600px;
+	margin: auto;
+	padding: 10px;
+}
+
