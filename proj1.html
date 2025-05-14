@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bicolano Express</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #ffe4ec;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #ff69b4 !important;
+    }
+
+    .navbar-brand img {
+      width: 80px;
+      border-radius: 10px;
+    }
+
+    .section-title {
+      color: #d63384;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .recipe-card {
+      background-color: #fff0f5;
+      border: 2px dashed #ff69b4;
+      border-radius: 12px;
+      padding: 20px;
+      transition: 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-card:hover {
+      transform: scale(1.03);
+    }
+
+    .recipe-card h3 {
+      color: #d63384;
+    }
+
+    .btn-pink {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+    }
+
+    .btn-pink:hover {
+      background-color: #ff4fa2;
+    }
+
+    .search-bar {
+      max-width: 300px;
+    }
+
+    .modal-header {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .modal-content {
+      border-radius: 10px;
+    }
+
+    .modal-body ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://www.creativefabrica.com/wp-content/uploads/2021/04/06/Food-Icon-with-Pink-Cutlery-Plate-Graphics-10479612-1.jpg" alt="Logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <form class="d-flex search-bar">
+          <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5 pt-5">
+    <section id="products" class="text-center">
+      <h2 class="section-title mt-5"> Bicolano Express</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="recipe-card">
+            <h3>ʟᴀɪɴɢ</h3>
+            <img src="https://kusinasecrets.com/wp-content/uploads/2024/11/u3317447599_httpss.mj_.runrzJY5AdW6LQ_top_down_view_of_Authent_136cae8e-1d96-4b4b-8417-693c972281cd_2.jpg" class="img-fluid rounded" alt="Laing" />
+            <p>Laing - Spicy dried taro leaves in coconut milk</p>
+            <button class="btn btn-pink" onclick="openModal('Laing')">See Recipe</button>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="recipe-card">
+            <h3>ᴄʜɪʟɪ ɪᴄᴇ ᴄʀᴇᴀᴍ</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqXlZ6A2dDvhSoANgVRAP-ZhAeiOkRFP52A&s" class="img-fluid rounded" alt="Chili Ice Cream" />
+            <p>Chili Ice Cream - A cold treat with a spicy kick</p>
+            <button class="btn btn-pink" onclick="openModal('Chili Ice Cream')">See Recipe</button>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="recipe-card">
+            <h3>sᴀɴᴛᴏʟᴀɴ</h3>
+            <img src="https://panlasangpinoy.com/wp-content/uploads/2017/09/Ginataang-Santol-Sinantolan-Recipe-Panlasang-Pinoy.jpg" class="img-fluid rounded" alt="Santol" />
+            <p>Santol - Tangy fruit cooked in bagoong or made into preserves</p>
+            <button class="btn btn-pink" onclick="openModal('Santolan')">See Recipe</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal fade" id="recipeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" src="" class="img-fluid rounded mb-3" alt="Recipe Image" />
+          <h6>Ingredients:</h6>
+          <ul id="modalIngredients"></ul>
+          <h6>Instructions:</h6>
+          <p id="modalInstructions"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const recipes = {
+      "Laing": {
+        image: "https://kusinasecrets.com/wp-content/uploads/2024/11/u3317447599_httpss.mj_.runrzJY5AdW6LQ_top_down_view_of_Authent_136cae8e-1d96-4b4b-8417-693c972281cd_2.jpg",
+        ingredients: [
+          "2 cups dried taro leaves",
+          "2 cups coconut milk",
+          "1/2 cup shrimp paste or fish sauce",
+          "2 tbsp chili (labuyo), chopped",
+          "1 onion, minced",
+          "4 cloves garlic, crushed"
+        ],
+        instructions: "Sauté garlic and onion. Add shrimp paste. Pour coconut milk and let simmer. Add taro leaves and chili. Cook until soft and creamy."
+      },
+      "Chili Ice Cream": {
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqXlZ6A2dDvhSoANgVRAP-ZhAeiOkRFP52A&s",
+        ingredients: [
+          "2 cups heavy cream",
+          "1 cup condensed milk",
+          "1 tbsp chili flakes or minced fresh chili",
+          "1 tsp vanilla extract"
+        ],
+        instructions: "Whip cream until thick. Fold in condensed milk, vanilla, and chili. Freeze for 6–8 hours before serving."
+      },
+      "Santolan": {
+        image: "https://panlasangpinoy.com/wp-content/uploads/2017/09/Ginataang-Santol-Sinantolan-Recipe-Panlasang-Pinoy.jpg",
+        ingredients: [
+          "6 pcs ripe santol, peeled and grated",
+          "1/4 cup shrimp paste (bagoong)",
+          "3 cloves garlic, minced",
+          "1 tbsp sugar",
+          "1 tbsp vinegar",
+          "Chili (optional)"
+        ],
+        instructions: "Sauté garlic and shrimp paste. Add grated santol, vinegar, sugar, and chili. Cook until well blended and slightly dry."
+      }
+    };
+
+    function openModal(recipeName) {
+      const recipe = recipes[recipeName];
+      if (!recipe) return;
+
+      document.getElementById("modalTitle").textContent = recipeName;
+      document.getElementById("modalImage").src = recipe.image;
+
+      const ingredientsList = document.getElementById("modalIngredients");
+      ingredientsList.innerHTML = "";
+      recipe.ingredients.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ingredientsList.appendChild(li);
+      });
+
+      document.getElementById("modalInstructions").textContent = recipe.instructions;
+
+      const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
+      modal.show();
+    }
+  </script>
+</body>
+</html>

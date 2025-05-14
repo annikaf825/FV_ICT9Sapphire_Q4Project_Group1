@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRT Booking System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff69b4;
+            --border-color: #ffb6c1;
+        }
+
+        body {
+            background-color: #fff0f5;
+        }
+
+        .navbar {
+            background-color: #ff69b4 !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .btn-primary {
+            background-color: #ff69b4;
+            border-color: #ff69b4;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff1493;
+            border-color: #ff1493;
+        }
+
+        .btn-outline-secondary {
+            border-color: #ff69b4;
+            color: #ff69b4;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        .card {
+            border-color: #ffb6c1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-select:focus, .form-control:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25);
+        }
+
+        .text-success {
+            color: #ff69b4 !important;
+        }
+
+        .badge {
+            background-color: #ffb6c1 !important;
+            color: #ff69b4 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">MRT</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Status</a>
+                <a class="nav-link" href="#">History</a>
+            </div>
+            <div class="ms-auto">
+                <a href="#" class="text-decoration-none text-white">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <!-- Booking Form -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">From Station:</label>
+                    <select class="form-select" id="fromStation">
+                        <option value="0">North Avenue</option>
+                        <option value="13">Quezon Avenue</option>
+                        <option value="13">Kamuning</option>
+                        <option value="16">Cubao</option>
+                        <option value="16">Santolan-Annapolis</option>
+                        <option value="20">Ortigas</option>
+                        <option value="20">Shaw Boulevard</option>
+                        <option value="20">Boni</option>
+                        <option value="24">Guadalupe</option>
+                        <option value="24">Buendia</option>
+                        <option value="24">Ayala</option>
+                        <option value="28">Magallanes</option>
+                        <option value="28">Taft Avenue</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">To Station:</label>
+                    <select class="form-select" id="toStation">
+                        <option value="0">North Avenue</option>
+                        <option value="13">Quezon Avenue</option>
+                        <option value="13">Kamuning</option>
+                        <option value="16">Cubao</option>
+                        <option value="16">Santolan-Annapolis</option>
+                        <option value="20">Ortigas</option>
+                        <option value="20">Shaw Boulevard</option>
+                        <option value="20">Boni</option>
+                        <option value="24">Guadalupe</option>
+                        <option value="24">Buendia</option>
+                        <option value="24">Ayala</option>
+                        <option value="28">Magallanes</option>
+                        <option value="28">Taft Avenue</option>
+                    </select>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                    <select class="form-select" id="discountType" style="width: auto;">
+                        <option value="student">Student - 10%</option>
+                        <option value="elderly">Elderly - 20%</option>
+                        <option value="pwd">PWD - 20%</option>
+                    </select>
+                    <input type="date" class="form-control" id="travelDate" style="width: auto;">
+                    <div class="input-group" style="width: auto;">
+                        <button class="btn btn-outline-secondary" onclick="adjustPassengers(-1)">-</button>
+                        <span class="form-control text-center" id="passengerCount" style="width: 50px;">1</span>
+                        <button class="btn btn-outline-secondary" onclick="adjustPassengers(1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Train Options -->
+        <div class="train-options">
+            <!-- MRT-3 -->
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">MRT-3 Line</h5>
+                            <p class="text-muted mb-2">5:00 AM - 10:30 PM</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge">Air Conditioned</span>
+                                <span class="badge">Security</span>
+                            </div>
+                        </div>
+                        <div class="text-end d-flex align-items-center gap-3">
+                            <span class="text-success fw-bold" style="font-size: 1.2rem;">₱<span id="mrt3Price">18</span></span>
+                            <button class="btn btn-primary" onclick="buyTicket('MRT-3')">Buy Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LRT-1 -->
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">LRT-1 Line</h5>
+                            <p class="text-muted mb-2">4:30 AM - 10:15 PM</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge">Air Conditioned</span>
+                                <span class="badge">Security</span>
+                            </div>
+                        </div>
+                        <div class="text-end d-flex align-items-center gap-3">
+                            <span class="text-success fw-bold" style="font-size: 1.2rem;">₱<span id="lrt1Price">20</span></span>
+                            <button class="btn btn-primary" onclick="buyTicket('LRT-1')">Buy Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LRT-2 -->
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">LRT-2 Line</h5>
+                            <p class="text-muted mb-2">5:00 AM - 9:30 PM</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge">Air Conditioned</span>
+                                <span class="badge">Security</span>
+                            </div>
+                        </div>
+                        <div class="text-end d-flex align-items-center gap-3">
+                            <span class="text-success fw-bold" style="font-size: 1.2rem;">₱<span id="lrt2Price">30</span></span>
+                            <button class="btn btn-primary" onclick="buyTicket('LRT-2')">Buy Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map at bottom -->
+        <div class="card shadow-sm mt-4">
+            <div class="card-body p-0">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Manila_LRT-MRT_map.png/600px-Manila_LRT-MRT_map.png" 
+                     alt="Manila LRT-MRT Map" 
+                     class="img-fluid w-100"
+                     style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var currentUser = null;
+        var ticketHistory = [];
+
+        var discountRates = {
+            'student': 0.10,
+            'elderly': 0.20,
+            'pwd': 0.20
+        };
+
+        window.onload = function() {
+            updatePrice();
+            setupEventListeners();
+        };
+
+        function setupEventListeners() {
+            document.getElementById('fromStation').addEventListener('change', updatePrice);
+            document.getElementById('toStation').addEventListener('change', updatePrice);
+            document.getElementById('discountType').addEventListener('change', updatePrice);
+            document.getElementById('passengerCount').addEventListener('change', updatePrice);
+        }
+
+        function adjustPassengers(change) {
+            var countElement = document.getElementById('passengerCount');
+            var currentCount = parseInt(countElement.textContent);
+            var newCount = currentCount + change;
+            newCount = Math.max(1, Math.min(10, newCount));
+            countElement.textContent = newCount;
+            updatePrice();
+        }
+
+        function updatePrice() {
+            var fromValue = parseInt(document.getElementById('fromStation').value) || 0;
+            var toValue = parseInt(document.getElementById('toStation').value) || 0;
+            var discountType = document.getElementById('discountType').value;
+            var passengers = parseInt(document.getElementById('passengerCount').textContent);
+            
+            var baseFare = Math.abs(toValue - fromValue);
+            baseFare = baseFare === 0 ? 13 : baseFare;
+            
+            var discount = discountRates[discountType] || 0;
+            var discountedFare = baseFare * (1 - discount);
+            var totalFare = Math.ceil(discountedFare * passengers);
+
+            document.getElementById('mrt3Price').textContent = totalFare;
+            document.getElementById('lrt1Price').textContent = Math.ceil(totalFare * 1.1);
+            document.getElementById('lrt2Price').textContent = Math.ceil(totalFare * 1.2);
+        }
+
+        function buyTicket(line) {
+            var fromSelect = document.getElementById('fromStation');
+            var toSelect = document.getElementById('toStation');
+            var fromStation = fromSelect.options[fromSelect.selectedIndex].text;
+            var toStation = toSelect.options[toSelect.selectedIndex].text;
+            var date = document.getElementById('travelDate').value;
+            var passengers = document.getElementById('passengerCount').textContent;
+            var price = document.getElementById(line.toLowerCase().replace('-', '') + 'Price').textContent;
+
+            var validationMessage = '';
+            validationMessage += !fromStation || !toStation ? 'Please select both stations\n' : '';
+            validationMessage += !date ? 'Please select a travel date\n' : '';
+            validationMessage += !currentUser ? 'Please sign in to purchase tickets\n' : '';
+
+            var canProceed = validationMessage === '';
+            alert(canProceed ? 'Ticket Purchased Successfully!\n\n' +
+                'Line: ' + line + '\n' +
+                'From: ' + fromStation + '\n' +
+                'To: ' + toStation + '\n' +
+                'Date: ' + date + '\n' +
+                'Passengers: ' + passengers + '\n' +
+                'Total Price: ₱' + price 
+                : validationMessage);
+
+            var ticket = {
+                id: Date.now(),
+                line: line,
+                from: fromStation,
+                to: toStation,
+                date: date,
+                passengers: passengers,
+                price: price,
+                status: 'Active'
+            };
+
+            canProceed && ticketHistory.push(ticket);
+        }
+    </script>
+</body>
+</html>
+

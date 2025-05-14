@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jellycat </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #ffc0cb;
+      padding: 15px 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #800040;
+    }
+
+    .page-content {
+      padding: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-item {
+      background-color: #fff0f5;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .product-item img {
+      width: 100%;
+      height: auto;
+      max-width: 200px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .product-item.special .star-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ffc0cb;
+      color: #d63384;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff0f5;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+    }
+
+    .popup form input,
+    .popup form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .popup form button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup form button:hover {
+      background-color: #d63384;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay"></div>
+
+  <nav class="navbar">
+    <a href="#" class="logo">Plush4all</a>
+    <div class="nav-links">
+      <a href="#" onclick="showHome()">Home</a>
+      <a onclick="showAbout()">About</a>
+      <a onclick="showSpecial()">Special</a>
+      <a onclick="showContact()">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-content" id="pageContent">
+    <div class="product-grid" id="productGrid">
+      <!-- Birthday Bunny - Special -->
+      <div class="product-item special" id="birthdayBunny">
+        <div class="star-badge">⭐</div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSES3AaoPG5IQrzbXNTBaHKjNsc2avQoQu1ZQ&s" alt="Bashful Beige Bunny Medium">
+        <div class="product-name">Bashful Beige Birthday Bunny</div>
+        <div class="product-price">₱ 1,950</div>
+      </div>
+
+      <!-- Other Products -->
+      <div class="product-item" data-non-special>
+        <img src="https://urbanessentials.com.ph/cdn/shop/files/ScreenShot2024-04-16at1.57.03PM.png?v=1713251764" alt="Bartholomew Bear">
+        <div class="product-name">Bartholomew Bear</div>
+        <div class="product-price">₱ 2,200</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://cdn11.bigcommerce.com/s-fz2bnmwg7y/images/stencil/1000w/products/3679/112178/BARB1BW__44736.1727975130.jpg?c=1" alt="Bashful Cottontail Bunny">
+        <div class="product-name">Bashful Cottontail Bunny</div>
+        <div class="product-price">₱ 1,950</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://cdn11.bigcommerce.com/s-23s5gfmhr7/images/stencil/1000w/products/1040/44655/OD2OC__39803.1727979828.jpg?c=1" alt="Odell Octopus">
+        <div class="product-name">Odell Octopus (Medium)</div>
+        <div class="product-price">₱ 2,500</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTaCfgi-YoZhN21n890B8HphgZjR40G-Rcqw&s" alt="Fuddlewuddle Lion">
+        <div class="product-name">Fuddlewuddle Lion</div>
+        <div class="product-price">₱ 2,000</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHNf9V3b2toW-YfYfr-bbHObM1rVa_RHZpjg&sg" alt="Amuseable Macaron">
+        <div class="product-name">Amuseable Macaron</div>
+        <div class="product-price">₱ 1,150</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://shop.theparentingemporium.com/cdn/shop/products/JC_AVOCADO_L.jpg?v=1691127037" alt="Amuseable Avocado">
+        <div class="product-name">Amuseable Avocado</div>
+        <div class="product-price">₱ 1,850</div>
+      </div>
+
+      <div class="product-item" data-non-special>
+        <img src="https://cdn11.bigcommerce.com/s-23s5gfmhr7/images/stencil/1280x1280/products/140/489/AMUSEABLE_CROISSANT__67279.1727974608.jpg?c=1" alt="Amuseable Croissant">
+        <div class="product-name">Amuseable Croissant</div>
+        <div class="product-price">₱ 1,350</div>
+      </div>
+    </div>
+    <div id="backToHomeBtn" class="hidden">
+      <button onclick="showHome()">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="popup" id="contactPopup">
+    <button class="close-btn" onclick="closePopup()">✖</button>
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <!-- About Popup -->
+  <div class="popup" id="aboutPopup">
+    <button class="close-btn" onclick="closePopup()">✖</button>
+    <h2>About Jellycat Store</h2>
+    <p>Welcome to the Jellycat Store! We offer a wide selection of adorable and cuddly plush toys for kids and collectors alike. Whether you're celebrating a special moment or simply want to bring a smile, Jellycat is the perfect companion!</p>
+  </div>
+
+  <script>
+    function showHome() {
+      document.getElementById("productGrid").style.display = "grid"; 
+      document.getElementById("backToHomeBtn").classList.add("hidden");
+      document.getElementById("birthdayBunny").style.display = "block"; 
+      document.querySelectorAll('.product-item[data-non-special]').forEach(el => {
+        el.style.display = "block"; 
+      });
+    }
+
+    function showSpecial() {
+      document.getElementById("productGrid").style.display = "block"; 
+      document.getElementById("birthdayBunny").style.display = "block"; 
+      document.querySelectorAll('.product-item[data-non-special]').forEach(el => {
+        el.style.display = "none";
+      });
+      document.getElementById("backToHomeBtn").classList.remove("hidden");
+    }
+
+    function closePopup() {
+      document.getElementById("contactPopup").style.display = "none";
+      document.getElementById("aboutPopup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    function showContact() {
+      document.getElementById("contactPopup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function showAbout() {
+      document.getElementById("aboutPopup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
