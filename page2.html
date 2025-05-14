@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ChAnNiJa's Portfolio</title>
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <style>
+    #LOGO {
+      height: 50px;
+    }
+    .recipe-card {
+  background-color: #fff0f5; /* light pink */
+  border: 3px solid #f48fb1; /* pink border */
+  border-radius: 20px;
+  padding: 20px;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+  color: #d81b60; 
+  font-weight: 600;
+}
+
+p {
+   color: #F49BAB; 
+  font-weight: 600;
+}
+
+.btn-pink-rounded{
+  background-color: #ec407a; 
+  border: none;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 20px;
+}
+
+.btn-pink-rounded:hover {
+  background-color: #d81b60; 
+} 
+.search-bar {
+  max-width: 300px;
+}
+
+.modal-header {
+  background-color: #ec407a; 
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-content {
+  border-radius: 15px;
+}
+
+.modal-body ul {
+  padding-left: 20px;
+}
+
+
+
+body{
+	background-image:url('https://img.freepik.com/free-vector/light-grey-dots-background_78370-2583.jpg');
+	background-repeat: no repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+  </style>
+</head>
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffa5dc;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="https://i.pinimg.com/736x/12/36/69/123669222f8b7a6d9a122a73bf832932.jpg" id="LOGO">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#About Us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Cassie">Cassie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Nika">Nika</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Nini">Nini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Jamimi">Jamimi</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#What's Next">What's Next</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search...">
+        <button class="btn btn-danger" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<main class="container my-5 pt-5">
+  <section id="products" class="text-center">
+    <div class="recipe-card p-4">
+      <div class="row align-items-center">
+       
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          <h3>Nika</h3>
+          <img src="nika.png" class="img-fluid rounded mb-2" width="300" height="300" alt="Nika" style="border-radius: 20px; border: 3px solid #f48fb1;"/>
+        </div>
+
+        
+        <div class="col-md-8">
+          <div style="background-color: #fff0f5; border-radius: 15px; border: 2px solid #f48fb1; padding: 20px;">
+            <h3 style="color: #d81b60;">Profile Information</h3>
+            <p><Bold>Name:</Bold> Annika Francisco</p>
+            <p><bold>Grade & Section:</Bold> Grade 9 - Sapphire</p>
+            <p><bold>Hobbies/Interests:</bold> Watching, Music, Mobile Games, Dancing</p>
+            <p><bold>Ambition:</bold> To live somewhere in East Asia</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="mt-5">
+        <h3 class="text-center">Quarter Projects</h3><br>
+         <button onclick="openModal('Quarter 1')" class="btn-pink-rounded">Quarter 1</button>
+         <button onclick="openModal('Quarter 2')" class="btn-pink-rounded">Quarter 2</button>
+         <button onclick="openModal('Quarter 3')"class="btn-pink-rounded">Quarter 3</button> 
+        <button onclick="openModal('Quarter 4')" class="btn-pink-rounded">Quarter 4</button> 
+      </div>
+    </div>
+  </section>
+</main>
+<br>
+<center>
+<footer><br>
+  <p>OB Montessori Center Fairview Campus</p>
+  <p>© Jamie castelo
+  © Annika Francisco
+© Cas Santos
+© Nia De Guzman</p>
+</footer>
+          </div>
+       <div class="modal fade" id="recipeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" class="img-fluid rounded mb-3" alt="Recipe Image" />
+        <h6>Information:</h6>
+        <ul id="modalInformation"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const recipes = {
+    "Quarter 1": {
+      image: "file:///C:/Users/franc/OneDrive/Documents/project4/Q1.png",
+      information: [
+        "Online Kpop Album Shop"
+      ]
+    },
+    "Quarter 2": {
+      image: "file:///C:/Users/franc/OneDrive/Documents/project4/Q2.png",
+      information: ["Online Restaurant Menu Kaninan Na!"]
+    },
+    "Quarter 3": {
+      image: "file:///C:/Users/franc/OneDrive/Documents/project4/Q3.png",
+      information: ["Online MRT Ticketing train Center"]
+    },
+    "Quarter 4": {
+      image: "file:///C:/Users/franc/OneDrive/Documents/project4/Q4.png",
+      information: ["BMI Calculator only using your height and weight"]
+    }
+  };
+
+  function openModal(recipeName) {
+    const recipe = recipes[recipeName];
+    if (!recipe) return;
+
+    document.getElementById("modalTitle").textContent = recipeName;
+    document.getElementById("modalImage").src = recipe.image;
+
+    const informationList = document.getElementById("modalInformation");
+    informationList.innerHTML = "";
+    recipe.information.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      informationList.appendChild(li);
+    });
+
+    const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
+    modal.show();
+  }
+</script>
+
+</body>
+</html>
