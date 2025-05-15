@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,184 +9,192 @@
     #LOGO {
       height: 50px;
     }
+
     .recipe-card {
-  background-color: #fff0f5; /* light pink */
-  border: 3px solid #f48fb1; /* pink border */
-  border-radius: 20px;
-  padding: 20px;
-  transition: 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
+      background-color: #fff0f5;
+      border: 3px solid #f48fb1;
+      border-radius: 20px;
+      padding: 20px;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
 
-.recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
-}
+    .recipe-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
+    }
 
-h3 {
-  color: #d81b60; /* darker pink for headings */
-  font-weight: 600;
-}
+    h3 {
+      color: #d81b60;
+      font-weight: 600;
+    }
 
-p {
-   color: #F49BAB; /* darker pink for headings */
-  font-weight: 600;
-}
+    p {
+      color: #F49BAB;
+      font-weight: 600;
+    }
 
-.btn-pink-rounded{
-  background-color: #ec407a; /* pink button */
-  border: none;
-  color: white;
-  border-radius: 25px;
-  padding: 8px 20px;
-}
+    .btn-pink-rounded {
+      background-color: #ec407a;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      padding: 8px 20px;
+    }
 
-.btn-pink-rounded:hover {
-  background-color: #d81b60; /* darker pink on hover */
-} 
-.search-bar {
-  max-width: 300px;
-}
+    .btn-pink-rounded:hover {
+      background-color: #d81b60;
+    }
 
-.modal-header {
-  background-color: #ec407a; /* pink modal header */
-  color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
+    .search-bar {
+      max-width: 300px;
+    }
 
-.modal-content {
-  border-radius: 15px;
-}
+    .modal-header {
+      background-color: #ec407a;
+      color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
 
-.modal-body ul {
-  padding-left: 20px;
-}
+    .modal-content {
+      border-radius: 15px;
+    }
 
-body{
-	background-image:url('https://img.freepik.com/free-vector/light-grey-dots-background_78370-2583.jpg');
-	background-repeat: no repeat;
-	background-size: cover;
-	background-attachment: fixed;
-}
-  </style>
-</head>
+    .modal-body ul {
+      padding-left: 20px;
+    }
+
+    body {
+      background-image: url('https://img.freepik.com/free-vector/light-grey-dots-background_78370-2583.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .navbar-custom {
+      background-color: #ffa5dc;
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+      color: #5f3150 !important;
+      margin: 0 10px;
+      font-weight: 600;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #d81b60 !important;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      object-fit: contain;
+      margin-top: -5px;
+    }
+
+    .navbar-right-items {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-left: auto;
+    }
+
+    .navbar form {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .btn-danger {
+      background-color: #e41f4d;
+      border: none;
+    }
+
+    .navbar .btn-danger:hover {
+      background-color: #c2185b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #5f3150;
+    }
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffa5dc;">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.html">
-      <img src="https://i.pinimg.com/736x/12/36/69/123669222f8b7a6d9a122a73bf832932.jpg" id="LOGO">
+      <img src="https://i.pinimg.com/736x/12/36/69/123669222f8b7a6d9a122a73bf832932.jpg" id="LOGO" alt="Logo">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="About Us">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Cassie">Cassie</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Nika">Nika</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Nini">Nini</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Jamimi">Jamimi</a>
-        </li>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="page1.html">Cassie</a></li>
+        <li class="nav-item"><a class="nav-link" href="page2.html">Nika</a></li>
+        <li class="nav-item"><a class="nav-link" href="page3.html">Nini</a></li>
+        <li class="nav-item"><a class="nav-link" href="page4.html">Jamimi</a></li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search...">
-        <button class="btn btn-danger" type="submit">Search</button>
-      </form>
+
+      <div class="navbar-right-items">
+        <a class="nav-link" href="page6.html" style="color: #000000;">What's Next?</a>
+        <a class="nav-link" href="page7.html" style="color: #000000;">Rate Us</a>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search...">
+          <button class="btn btn-danger" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </div>
 </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
- <main class="container my-5 pt-5">
-    <section id="products" class="text-center">
-      <div class="row g-4">
-        <div class="col-md-3">
-          <div class="recipe-card">
-            <h3>Cassie</h3>
-            <img src="cassie.png" class="img-fluid rounded mb-2" alt="cassie" />
-            <a href="page1.html" class="btn-pink-rounded">See Info</a>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="recipe-card">
-            <h3>Nika</h3>
-            <img src="nika.png" class="img-fluid rounded mb-2" alt="Nika" />
-             <a href="page2.html" class="btn-pink-rounded">See Info</a>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="recipe-card">
-            <h3>Jamimi</h3>
-            <img src="jamie.png" class="img-fluid rounded mb-2" alt="Jamimi" />
-            <a href="page3.html" class="btn-pink-rounded">See Info</a>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="recipe-card">
-            <h3>Nini</h3>
-            <img src="nia.png" class="img-fluid rounded mb-2" alt="Nini" />
-            <a href="page4.html" class="btn-pink-rounded">See Info</a>
-          </div>
+<main class="container my-5 pt-5">
+  <section id="products" class="text-center">
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="recipe-card">
+          <h3>Cassie</h3>
+          <img src="cassie.png" class="img-fluid rounded mb-2" alt="Cassie" />
+          <a href="page1.html" class="btn-pink-rounded">See Info</a>
         </div>
       </div>
-    </section>
-  </main>
+
+      <div class="col-md-3">
+        <div class="recipe-card">
+          <h3>Nika</h3>
+          <img src="nika.png" class="img-fluid rounded mb-2" alt="Nika" />
+          <a href="page2.html" class="btn-pink-rounded">See Info</a>
         </div>
-<center>
-  <div style="background-color: #fff0f5; border: 2px solid #FF77A9; border-radius: 15px; padding: 20px; width: 400px;">
-    <h2 style="color: #FF7777;">Rate Us!</h2>
-    <form>
-      <label for="name" style="color: #FF7777;">Your Name:</label><br>
-      <input type="text" id="name" name="name" required><br><br>
+      </div>
 
-      <label for="rating" style="color: #FF7777;">Rate our project (1–5):</label><br>
-      <select id="rating" name="rating" required>
-        <option value="">Choose</option>
-        <option value="5">5 - Excellent🤑</option>
-        <option value="4">4 - Good😌</option>
-        <option value="3">3 - Okay😮</option>
-        <option value="2">2 - Bad😖</option>
-        <option value="1">1 - Terrible😫</option>
-      </select><br><br>
+      <div class="col-md-3">
+        <div class="recipe-card">
+          <h3>Jamimi</h3>
+          <img src="jamie.png" class="img-fluid rounded mb-2" alt="Jamimi" />
+          <a href="page3.html" class="btn-pink-rounded">See Info</a>
+        </div>
+      </div>
 
-      <label for="feedback" style="color: #FF7777;">Feedback:</label><br>
-      <textarea id="feedback" name="feedback" rows="4" cols="30" placeholder="Write here..."></textarea><br><br>
+      <div class="col-md-3">
+        <div class="recipe-card">
+          <h3>Nini</h3>
+          <img src="nia.png" class="img-fluid rounded mb-2" alt="Nini" />
+          <a href="page4.html" class="btn-pink-rounded">See Info</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-      <input type="submit" class="btn-pink-rounded" value="Submit">
-    </form>
-  </div>
-
-<br>
-<footer><br>
+<footer>
   <p>OB Montessori Center Fairview Campus</p>
-  <p>© Jamie castelo
-  © Annika Francisco
-© Cas Santos
-© Nia De Guzman</p>
+  <p>© Jamie Castelo • © Annika Francisco • © Cas Santos • © Nia De Guzman</p>
 </footer>
 
-</html>
-
-
-
-</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
