@@ -12,8 +12,15 @@
       background-color: #ffe6f0;
       padding: 30px;
       border-radius: 20px;
-      max-width: 600px;
+      max-width: 800px;
       margin: auto;
+    }
+    .person-box {
+      border: 1px solid #f5c6cb;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      background-color: #fff;
     }
   </style>
 </head>
@@ -21,38 +28,138 @@
   <div class="form-box">
     <h2 class="text-center text-danger">Rate Our Portfolio</h2>
     <form onsubmit="return giveFeedback()">
-      <div class="mb-3">
-        <label for="rating" class="form-label">Rate us (1-10):</label>
-        <input type="number" id="rating" class="form-control" min="1" max="10" required>
+      
+      <!-- Repeat for each person -->
+      <div class="person-box">
+        <h4>Cassi</h4>
+        <div class="mb-3">
+          <label class="form-label">Select Project/Quiz:</label>
+          <select id="cassiProject" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>Q1 Project</option>
+            <option>Q2 Project</option>
+            <option>Q3 Project</option>
+            <option>Q4 Quiz2</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rate Cassi (1-10):</label>
+          <input type="number" id="cassiRating" class="form-control" min="1" max="10" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comments:</label>
+          <textarea id="cassiComments" class="form-control" rows="2" required></textarea>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="comments" class="form-label">Your comments:</label>
-        <textarea id="comments" class="form-control" rows="3" required></textarea>
+
+      <div class="person-box">
+        <h4>Jamimi</h4>
+        <div class="mb-3">
+          <label class="form-label">Select Project/Quiz:</label>
+          <select id="jamimiProject" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>Q1 Project</option>
+            <option>Q2 Project</option>
+            <option>Q3 Project</option>
+            <option>Q4 Quiz2</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rate Jamimi (1-10):</label>
+          <input type="number" id="jamimiRating" class="form-control" min="1" max="10" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comments:</label>
+          <textarea id="jamimiComments" class="form-control" rows="2" required></textarea>
+        </div>
       </div>
-      <button type="submit" class="btn btn-pink w-100">Submit</button>
+
+      <div class="person-box">
+        <h4>Nikka</h4>
+        <div class="mb-3">
+          <label class="form-label">Select Project/Quiz:</label>
+          <select id="nikkaProject" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>Q1 Project</option>
+            <option>Q2 Project</option>
+            <option>Q3 Project</option>
+            <option>Q4 Quiz2</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rate Nikka (1-10):</label>
+          <input type="number" id="nikkaRating" class="form-control" min="1" max="10" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comments:</label>
+          <textarea id="nikkaComments" class="form-control" rows="2" required></textarea>
+        </div>
+      </div>
+
+      <div class="person-box">
+        <h4>Nini</h4>
+        <div class="mb-3">
+          <label class="form-label">Select Project/Quiz:</label>
+          <select id="niniProject" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>Q1 Project</option>
+            <option>Q2 Project</option>
+            <option>Q3 Project</option>
+            <option>Q4 Quiz2</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rate Nini (1-10):</label>
+          <input type="number" id="niniRating" class="form-control" min="1" max="10" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comments:</label>
+          <textarea id="niniComments" class="form-control" rows="2" required></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-danger w-100">Submit</button>
     </form>
+
     <div id="response" class="mt-4 text-center fw-bold"></div>
   </div>
 
   <script>
     function giveFeedback() {
-      const rating = parseInt(document.getElementById("rating").value);
-      const comments = document.getElementById("comments").value;
       const response = document.getElementById("response");
+      let people = [
+        { name: "Cassi", rating: "cassiRating", comments: "cassiComments", project: "cassiProject" },
+        { name: "Jamimi", rating: "jamimiRating", comments: "jamimiComments", project: "jamimiProject" },
+        { name: "Nikka", rating: "nikkaRating", comments: "nikkaComments", project: "nikkaProject" },
+        { name: "Nini", rating: "niniRating", comments: "niniComments", project: "niniProject" }
+      ];
 
-      let message = "";
+      let output = "<h4>Feedback Summary:</h4>";
 
-      if (rating >= 9) {
-        message = "Thank you! We're thrilled you loved it! 💖";
-      } else if (rating >= 6) {
-        message = "Thanks for the feedback! We'll keep improving!";
-      } else {
-        message = "We appreciate your honesty. We'll work harder next time!";
-      }
+      people.forEach(person => {
+        let rating = parseInt(document.getElementById(person.rating).value);
+        let comments = document.getElementById(person.comments).value;
+        let project = document.getElementById(person.project).value;
 
-      response.textContent = `Rating: ${rating}/10. ${message}`;
-      return false;
+        let message = "";
+        if (rating >= 9) {
+          message = "Excellent work! 💖";
+        } else if (rating >= 6) {
+          message = "Good job, with room to grow!";
+        } else {
+          message = "Needs improvement — you can do it!";
+        }
+
+        output += `<p><strong>${person.name}</strong> (${project}) - Rating: ${rating}/10<br>Comments: ${comments}<br><em>${message}</em></p>`;
+      });
+
+      response.innerHTML = output;
+      return false; 
     }
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
