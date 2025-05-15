@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rate Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff0f5;
+      padding: 50px;
+    }
+    .form-box {
+      background-color: #ffe6f0;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2 class="text-center text-danger">Rate Our Portfolio</h2>
+    <form onsubmit="return giveFeedback()">
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rate us (1-10):</label>
+        <input type="number" id="rating" class="form-control" min="1" max="10" required>
+      </div>
+      <div class="mb-3">
+        <label for="comments" class="form-label">Your comments:</label>
+        <textarea id="comments" class="form-control" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-pink w-100">Submit</button>
+    </form>
+    <div id="response" class="mt-4 text-center fw-bold"></div>
+  </div>
+
+  <script>
+    function giveFeedback() {
+      const rating = parseInt(document.getElementById("rating").value);
+      const comments = document.getElementById("comments").value;
+      const response = document.getElementById("response");
+
+      let message = "";
+
+      if (rating >= 9) {
+        message = "Thank you! We're thrilled you loved it! 💖";
+      } else if (rating >= 6) {
+        message = "Thanks for the feedback! We'll keep improving!";
+      } else {
+        message = "We appreciate your honesty. We'll work harder next time!";
+      }
+
+      response.textContent = `Rating: ${rating}/10. ${message}`;
+      return false;
+    }
+  </script>
+</body>
+</html>
